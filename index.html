@@ -102,8 +102,7 @@
 					</div>
 				</form> -->
   <!-- START - We recommend to place the below code where you want the form in your website html  -->
-  <div class="sib-form" style="padding: 0; text-align: center;
-		   background-color: #ffffff;                                 ">
+  <div class="sib-form" style="padding: 0; text-align: center; background-color: #ffffff;">
 	<div id="sib-form-container" class="sib-form-container">
 	  <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-width:px; border-color:#ff4949;max-width:350px; border-width:px;">
 		<div class="sib-form-message-panel__text sib-form-message-panel__text--center">
@@ -146,6 +145,23 @@
 				</label>
 				<label class="entry__specification" style="font-size:12px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#8390A4; border-width:px;">
 				  Veuillez renseigner votre adresse email pour vous inscrire. Ex. : abc@xyz.com
+				</label>
+			  </div>
+			</div>
+		  </div>
+		  <div style="padding: 8px 0;">
+			<div class="sib-captcha sib-form-block">
+			  <div class="form__entry entry_block">
+				<div class="form__label-row ">
+				  <script>
+					function handleCaptchaResponse() {
+					  var event = new Event('captchaChange');
+					  document.getElementById('sib-captcha').dispatchEvent(event);
+					}
+				  </script>
+				  <div class="g-recaptcha sib-visible-recaptcha" id="sib-captcha" data-sitekey="6LerO-MUAAAAADlkZpbgROttdHTkQZCrCwSSO8fY" data-callback="handleCaptchaResponse"></div>
+				</div>
+				<label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-width:px; border-color:#ff4949;">
 				</label>
 			  </div>
 			</div>
