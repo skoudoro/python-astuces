@@ -1,6 +1,7 @@
 """Convert markdown to html and send it to SendinBlue."""
 import os
-from datetime import datetime
+from datetime import datetime, timezone
+from email import utils
 import markdown as md
 import jinja2
 import click
@@ -213,8 +214,7 @@ def create_rss_file(fname):
         rss file name
 
     """
-    DEFAULT_RSS_TEMPLATE = """
-<?xml version="1.0" encoding="utf-8"?>
+    DEFAULT_RSS_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    <title>Python Astuces - archives</title>
@@ -244,8 +244,8 @@ def update_rss(rss_file, numero_id):
     with open(rss_file, 'r') as f:
         rss_data = f.read()
 
-    now = datetime.now()
-    now_str = now.strftime("%d/%m/%Y %H:%M:%S")
+    now = datetime.now(timezone.utc)
+    now_str = utils.format_datetime(now)
     rss_item = jinja2.Template(RSS_TEMPLATE).render(numero=numero_id,
                                                     date=now_str)
     rss_data = rss_data.replace(text_to_replace,
