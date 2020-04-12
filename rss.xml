@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   <title>Python Astuces - archives</title>
+   <description>Python Astuces - archives</description>
+   <link>https://pythonastuces.com</link>
+   <atom:link href="https://pythonastuces.com/rss.xml"
+     rel="self" type="application/rss+xml" />
+
+<item>
+    <title>Python Astuces - #02</title>
+    <link>https://pythonastuces.com/archives/numero-02</link>
+    <guid>https://pythonastuces.com/archives/numero-02</guid>
+    <pubDate>12/04/2020 21:20:39</pubDate>
+</item>
+
+</channel>
+</rss>
