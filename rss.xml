@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
@@ -11,7 +12,15 @@
     <title>Python Astuces - #02</title>
     <link>https://pythonastuces.com/archives/numero-02</link>
     <guid>https://pythonastuces.com/archives/numero-02</guid>
-    <pubDate>12/04/2020 21:20:39</pubDate>
+    <pubDate>6/04/2020 16:00:21</pubDate>
+</item>
+
+
+<item>
+    <title>Python Astuces - #01</title>
+    <link>https://pythonastuces.com/archives/numero-01</link>
+    <guid>https://pythonastuces.com/archives/numero-01</guid>
+    <pubDate>31/03/2020 16:00:15</pubDate>
 </item>
 
 </channel>
