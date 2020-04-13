@@ -1,0 +1,6 @@
+https://pythonastuces.com/
+https://pythonastuces.com/archives
+https://pythonastuces.com/rss.xml
+https://pythonastuces.com/archives/numero-01
+https://pythonastuces.com/archives/numero-02
+https://pythonastuces.com/archives/numero-03
