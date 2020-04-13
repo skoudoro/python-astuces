@@ -1,11 +1,14 @@
 """Convert markdown to html and send it to SendinBlue."""
 import os
 import re
+import json
 from datetime import datetime, timezone
 from email import utils
 import markdown as md
 import jinja2
 import click
+import sib_api_v3_sdk
+from sib_api_v3_sdk.rest import ApiException
 
 CODE_STYLE = """
 .codehilite .hll { background-color: #49483e }
@@ -224,7 +227,7 @@ def convert_to_html(filename):
     extensions = ['extra', 'codehilite', 'smarty']
     md_txt = md.markdown(data, extensions=extensions,
                          output_format='html5')
-    print(md_txt)
+    # print(md_txt)
     return md_txt, title
 
 
@@ -302,13 +305,62 @@ def update_archives_list(numero_id, title):
         f.write(txt)
 
 
+def upload_to_sib(content, numero_id, title, hours="18:00:00"):
+    folder = get_script_path()
+    fname = os.path.join(folder, 'sib.keys')
+    if not os.path.isfile(fname):
+        raise IOError("Please, create configuration file for upload")
+
+    with open(fname, 'r') as f:
+        config_data = json.load(f)
+    configuration = sib_api_v3_sdk.Configuration()
+    configuration.api_key['api-key'] = config_data.get('api-key-v3')
+
+    api_client = sib_api_v3_sdk.ApiClient(configuration)
+    api_instance = sib_api_v3_sdk.AccountApi(api_client)
+
+    try:
+        # Get your account informations, plans and credits details
+        api_response = api_instance.get_account()
+        print(api_response)
+    except ApiException as e:
+        print("Exception when calling AccountApi->get_account: %s\n" % e)
+
+    now = datetime.now(timezone.utc)
+    scheduled_at = now.strftime("%Y-%m-%dT{}Z".format(hours))
+    api_instance = sib_api_v3_sdk.EmailCampaignsApi(api_client)
+
+    # Define the campaign settings\
+    email_campaigns = sib_api_v3_sdk.CreateEmailCampaign(
+        name="Python TEST CMD Astuces #{}".format(numero_id),
+        subject="Python TEST CMD Astuces #{} - {}".format(numero_id, title),
+        sender={"name": "Python Astuces", "email": "info@pythonastuces.com"},
+        reply_to="info@pythonastuces.com",
+        html_content=content,
+        # Select the recipients\
+        recipients={"listIds": [2, ]},
+        scheduled_at=scheduled_at,
+        # inline_image_activation=True
+        )
+
+    # Make the call to the client\
+    try:
+        api_response = api_instance.create_email_campaign(email_campaigns)
+        print(api_response)
+    except ApiException as e:
+        print("Exception when calling EmailCampaignsApi->create_email_campaign:%s\n" % e)
+
+
 @click.command()
 @click.option('--with_rss', is_flag=True,
               help='Update rss with the current numero')
 @click.option('--with_archive_list', is_flag=True,
               help='Update archives list with the current numero')
+@click.option('--upload_sib', is_flag=True,
+              help='Upload html to SendinBlue')
 @click.argument('numero_id')
-def main(numero_id=None, with_rss=False, with_archive_list=False):
+def main(numero_id=None, with_rss=False, with_archive_list=False,
+         upload_sib=False):
     folder = get_script_path()
     fname = "numero-{}.md".format(numero_id)
     fname = os.path.join(folder, fname)
@@ -329,8 +381,8 @@ def main(numero_id=None, with_rss=False, with_archive_list=False):
     if with_archive_list:
         update_archives_list(numero_id, title)
 
-
-    # upload()
+    if upload_sib:
+        upload_to_sib(doc, numero_id, title)
 
 
 if __name__ == '__main__':

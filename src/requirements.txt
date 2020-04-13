@@ -2,3 +2,4 @@ click>=7.0
 pygments>=2.5.2
 jinja2>=2.10.3
 markdown>=3.2.1
+sib_api_v3_sdk>=6.1.0
