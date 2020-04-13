@@ -1,4 +1,4 @@
-<!--title -->
+<!--title: underscore peut vous être utile -->
 # [![Python Astuces](https://pythonastuces.com/images/python-logo.jpeg)](https://pythonastuces.com) Python Astuces
 
 #### Astuces de la semaine

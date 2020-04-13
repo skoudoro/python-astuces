@@ -1,3 +1,4 @@
+<!--title: itertools sous utilisé ? -->
 # [![Python Astuces](https://pythonastuces.com/images/python-logo.jpeg)](https://pythonastuces.com) Python Astuces
 
 Bonjour à tous,

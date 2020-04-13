@@ -1,3 +1,4 @@
+<!--title: Deux très bon alliés: unpacking et arguments de fonction -->
 # [![Python Astuces](https://pythonastuces.com/images/python-logo.jpeg)](https://pythonastuces.com) Python Astuces
 
 Bonjour à tous,
