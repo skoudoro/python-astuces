@@ -1,5 +1,6 @@
 """Convert markdown to html and send it to SendinBlue."""
 import os
+import re
 from datetime import datetime, timezone
 from email import utils
 import markdown as md
@@ -83,7 +84,7 @@ CODE_STYLE = """
 
 RSS_TEMPLATE = """
 <item>
-    <title>Python Astuces - #{{numero}}</title>
+    <title>Python Astuces #{{numero}} - {{title}}</title>
     <link>https://pythonastuces.com/archives/numero-{{numero}}</link>
     <guid>https://pythonastuces.com/archives/numero-{{numero}}</guid>
     <pubDate>{{date}}</pubDate>
@@ -186,6 +187,26 @@ def get_script_path():
     return os.path.dirname(os.path.realpath(__file__))
 
 
+def extract_from_tag(text, start, end):
+    """Extract a substring from a tag.
+
+    Parameters
+    ----------
+    text : str
+        full text
+    start : str
+        starting string
+    end : str
+        end string
+    """
+    try:
+        found = re.search('{}(.+?){}'.format(start, end), text).group(1)
+    except AttributeError:
+        found = ''
+
+    return found
+
+
 def convert_to_html(filename):
     """Convert Markdown file to html.
 
@@ -198,11 +219,13 @@ def convert_to_html(filename):
     with open(filename, 'r') as f:
         data = f.read()
 
+    title = extract_from_tag(data, '<!--title:', '-->').strip()
+
     extensions = ['extra', 'codehilite', 'smarty']
     md_txt = md.markdown(data, extensions=extensions,
                          output_format='html5')
     print(md_txt)
-    return md_txt
+    return md_txt, title
 
 
 def create_rss_file(fname):
@@ -229,7 +252,7 @@ def create_rss_file(fname):
         f.write(DEFAULT_RSS_TEMPLATE)
 
 
-def update_rss(rss_file, numero_id):
+def update_rss(rss_file, numero_id, title=''):
     """Update rss file.
 
     Parameters
@@ -238,6 +261,7 @@ def update_rss(rss_file, numero_id):
         rss file name
     numero_id : int
         numero of the episode
+    title : str
 
     """
     text_to_replace = 'type="application/rss+xml" />'
@@ -247,24 +271,50 @@ def update_rss(rss_file, numero_id):
     now = datetime.now(timezone.utc)
     now_str = utils.format_datetime(now)
     rss_item = jinja2.Template(RSS_TEMPLATE).render(numero=numero_id,
-                                                    date=now_str)
+                                                    date=now_str, title=title)
     rss_data = rss_data.replace(text_to_replace,
                                 "{}\n{}".format(text_to_replace, rss_item))
     with open(rss_file, 'w') as f:
         f.write(rss_data)
 
 
+def update_archives_list(numero_id, title):
+    """Update archives list.
+
+    Parameters
+    ----------
+    numero_id : int
+        [description]
+    title : str
+        [description]
+    """
+    folder = get_script_path()
+    fname = os.path.join(folder, '..', 'archives.html')
+    with open(fname, 'r') as f:
+        txt = f.read()
+    txt_to_replace = '<!--new_archive_to_add-->'
+    li_tag = '<li class= "p-b-10">'
+    li_tag += '<a href="archives/numero-{}.html">'.format(numero_id)
+    li_tag += '#{} - {}</a></li>'.format(numero_id, title)
+    txt = txt.replace(txt_to_replace,
+                      '{}\n\t\t\t\t{}'.format(li_tag, txt_to_replace))
+    with open(fname, 'w') as f:
+        f.write(txt)
+
+
 @click.command()
 @click.option('--with_rss', is_flag=True,
-              help='Update rss with the current numeros')
+              help='Update rss with the current numero')
+@click.option('--with_archive_list', is_flag=True,
+              help='Update archives list with the current numero')
 @click.argument('numero_id')
-def main(numero_id=None, with_rss=None):
+def main(numero_id=None, with_rss=False, with_archive_list=False):
     folder = get_script_path()
     fname = "numero-{}.md".format(numero_id)
     fname = os.path.join(folder, fname)
     out_fname = "numero-{}.html".format(numero_id)
     out_fname = os.path.join(folder, "..", "archives", out_fname)
-    html = convert_to_html(fname)
+    html, title = convert_to_html(fname)
     doc = jinja2.Template(TEMPLATE).render(content=html,
                                            pycodestyle=CODE_STYLE)
     with open(out_fname, 'w') as f:
@@ -274,8 +324,11 @@ def main(numero_id=None, with_rss=None):
         rss_file = os.path.join(folder, "..", "rss.xml")
         if not os.path.isfile(rss_file):
             create_rss_file(rss_file)
+        update_rss(rss_file, numero_id, title)
 
-        update_rss(rss_file, numero_id)
+    if with_archive_list:
+        update_archives_list(numero_id, title)
+
 
     # upload()
 
