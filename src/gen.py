@@ -348,7 +348,9 @@ def upload_to_sib(content, numero_id, title, hours="18:00:00"):
         api_response = api_instance.create_email_campaign(email_campaigns)
         print(api_response)
     except ApiException as e:
-        print("Exception when calling EmailCampaignsApi->create_email_campaign:%s\n" % e)
+        msg = "Exception when calling"
+        msg += " EmailCampaignsApi->create_email_campaign:%s\n" % e
+        print(msg)
 
 
 @click.command()
@@ -361,6 +363,22 @@ def upload_to_sib(content, numero_id, title, hours="18:00:00"):
 @click.argument('numero_id')
 def main(numero_id=None, with_rss=False, with_archive_list=False,
          upload_sib=False):
+    """Convert markdown to html and update the newsletter to all platform.
+
+    e.g : python gen.py 01 --with_rss --with_archive_list --upload_sib
+
+    Parameters
+    ----------
+    numero_id : int
+        newsletter version number to grab, by default None
+    with_rss : bool, optional
+        update rss feed with the new edition, by default False
+    with_archive_list : bool, optional
+        update archives.html file with the new edition, by default False
+    upload_sib : bool, optional
+        create email template and schedule it via sendinblue, by default False
+
+    """
     folder = get_script_path()
     fname = "numero-{}.md".format(numero_id)
     fname = os.path.join(folder, fname)
