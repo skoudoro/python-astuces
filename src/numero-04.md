@@ -42,7 +42,7 @@ SyntaxError: invalid character in identifier
 
 > “If the implementation is hard to explain, it’s a bad idea.” -- Zen Python
 
-***Mauvais et à éviter**
+**Mauvais et à éviter**
 
 ```python
 # Lambda est très utile mais doit être utilisé rarement et avec parcimonie.

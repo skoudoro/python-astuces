@@ -73,3 +73,5 @@ Bonne fin de dimanche et Bonne semaine à tous !
 **Happy Pythoning 🐍!**
 
 **Serge ([@skoudoro](https://twitter.com/skoudoro)) - [pythonastuces.com](https://pythonastuces.com)**
+
+[archives](https://pythonastuces.com/archives.html) | [flux rss](https://pythonastuces.com/rss.xml)

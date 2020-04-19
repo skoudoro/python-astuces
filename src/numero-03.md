@@ -87,3 +87,5 @@ ps: Désolé pour le retard de cette édition ;-)
 **Bonne Pythonnade  🐍!**
 
 **[PythonAstuces.com](https://pythonastuces.com)**
+
+[archives](https://pythonastuces.com/archives.html) | [flux rss](https://pythonastuces.com/rss.xml)
