@@ -326,20 +326,20 @@ def upload_to_sib(content, numero_id, title, hours="18:00:00"):
     except ApiException as e:
         print("Exception when calling AccountApi->get_account: %s\n" % e)
 
-    now = datetime.now(timezone.utc)
-    scheduled_at = now.strftime("%Y-%m-%dT{}Z".format(hours))
+    # now = datetime.now(timezone.utc)
+    # scheduled_at = now.strftime("%Y-%m-%dT{}Z".format(hours))
     api_instance = sib_api_v3_sdk.EmailCampaignsApi(api_client)
 
     # Define the campaign settings\
     email_campaigns = sib_api_v3_sdk.CreateEmailCampaign(
-        name="Python TEST CMD Astuces #{}".format(numero_id),
-        subject="Python TEST CMD Astuces #{} - {}".format(numero_id, title),
+        name="Python Astuces #{}".format(numero_id),
+        subject="Python Astuces #{} - {}".format(numero_id, title),
         sender={"name": "Python Astuces", "email": "info@pythonastuces.com"},
         reply_to="info@pythonastuces.com",
         html_content=content,
         # Select the recipients\
         recipients={"listIds": [2, ]},
-        #scheduled_at=scheduled_at,
+        # scheduled_at=scheduled_at,
         # inline_image_activation=True
         )
 
