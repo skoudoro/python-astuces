@@ -339,7 +339,7 @@ def upload_to_sib(content, numero_id, title, hours="18:00:00"):
         html_content=content,
         # Select the recipients\
         recipients={"listIds": [2, ]},
-        scheduled_at=scheduled_at,
+        #scheduled_at=scheduled_at,
         # inline_image_activation=True
         )
 
