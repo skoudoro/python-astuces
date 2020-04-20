@@ -305,6 +305,27 @@ def update_archives_list(numero_id, title):
         f.write(txt)
 
 
+def update_sitemap(numero_id):
+    """Update sitemap.
+
+    Parameters
+    ----------
+    numero_id : int
+        [description]
+    title : str
+        [description]
+    """
+    folder = get_script_path()
+    fname = os.path.join(folder, '..', 'sitemap.txt')
+    with open(fname, 'r') as f:
+        txt = f.read()
+
+    txt += '\nhttps://pythonastuces.com/archives/numero-{}'.format(numero_id)
+
+    with open(fname, 'w') as f:
+        f.write(txt)
+
+
 def upload_to_sib(content, numero_id, title, hours="18:00:00"):
     folder = get_script_path()
     fname = os.path.join(folder, 'sib.keys')
@@ -398,6 +419,7 @@ def main(numero_id=None, with_rss=False, with_archive_list=False,
 
     if with_archive_list:
         update_archives_list(numero_id, title)
+        update_sitemap(numero_id)
 
     if upload_sib:
         upload_to_sib(doc, numero_id, title)
