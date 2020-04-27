@@ -45,7 +45,7 @@ Bonne semaine à tous!
 ...    if nombre % 2 != 0:
 ...        nombre_impair.append(nombre)
 
->>> print(nombre)
+>>> print(nombre_impair)
 [1, 3, 5, 7]
 ```
 
