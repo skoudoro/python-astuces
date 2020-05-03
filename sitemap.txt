@@ -6,3 +6,4 @@ https://pythonastuces.com/archives/numero-02
 https://pythonastuces.com/archives/numero-03
 https://pythonastuces.com/archives/numero-04
 https://pythonastuces.com/archives/numero-05
+https://pythonastuces.com/archives/numero-06
