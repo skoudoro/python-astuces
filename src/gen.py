@@ -148,6 +148,11 @@ h4 {
 p {
     margin : 14px;
 }
+ul {
+    margin : 30px;
+}
+
+
 blockquote {
   border-left: 5px solid #ccc;
   margin: 1.5em 20px;

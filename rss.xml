@@ -8,6 +8,14 @@
      rel="self" type="application/rss+xml" />
 
 <item>
+    <title>Python Astuces #07 - Remplacer vos switch/case par un dictionnaire</title>
+    <link>https://pythonastuces.com/archives/numero-07</link>
+    <guid>https://pythonastuces.com/archives/numero-07</guid>
+    <pubDate>Sun, 10 May 2020 16:30:30 +0000</pubDate>
+</item>
+
+
+<item>
     <title>Python Astuces #06 - Le fameux __slot__</title>
     <link>https://pythonastuces.com/archives/numero-06</link>
     <guid>https://pythonastuces.com/archives/numero-06</guid>
