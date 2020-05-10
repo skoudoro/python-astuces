@@ -27,7 +27,7 @@ Bonne fin de dimanche et Bonne semaine à tous!
 ...    elif eleve == 'jean':
 ...        return 19
 ...    else:
-...        return None
+...        return -1
 ...
 >>> obtenir_la_note('jean')
 19
@@ -37,7 +37,7 @@ Bonne fin de dimanche et Bonne semaine à tous!
 ...    notes = {'thomas': 15,
 ...             'bill': 9,
 ...             'jean': 19,}
-...    return notes.get(eleve, None)
+...    return notes.get(eleve, -1)
 ...
 >>> obtenir_la_note_via_dict('bill')
 9
