@@ -8,3 +8,4 @@ https://pythonastuces.com/archives/numero-04
 https://pythonastuces.com/archives/numero-05
 https://pythonastuces.com/archives/numero-06
 https://pythonastuces.com/archives/numero-07
+https://pythonastuces.com/archives/numero-08
