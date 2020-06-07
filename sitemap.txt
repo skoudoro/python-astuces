@@ -10,3 +10,4 @@ https://pythonastuces.com/archives/numero-06
 https://pythonastuces.com/archives/numero-07
 https://pythonastuces.com/archives/numero-08
 https://pythonastuces.com/archives/numero-09
+https://pythonastuces.com/archives/numero-10

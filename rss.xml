@@ -8,6 +8,14 @@
      rel="self" type="application/rss+xml" />
 
 <item>
+    <title>Python Astuces #10 - La curryfication avec "partial"</title>
+    <link>https://pythonastuces.com/archives/numero-10</link>
+    <guid>https://pythonastuces.com/archives/numero-10</guid>
+    <pubDate>Sun, 07 Jun 2020 14:00:00 +0000</pubDate>
+</item>
+
+
+<item>
     <title>Python Astuces #09 - Obtenir plus de controle sur le formatage de texte</title>
     <link>https://pythonastuces.com/archives/numero-09</link>
     <guid>https://pythonastuces.com/archives/numero-09</guid>
