@@ -12,3 +12,4 @@ https://pythonastuces.com/archives/numero-08
 https://pythonastuces.com/archives/numero-09
 https://pythonastuces.com/archives/numero-10
 https://pythonastuces.com/archives/numero-11
+https://pythonastuces.com/archives/numero-12
