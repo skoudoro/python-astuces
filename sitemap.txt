@@ -14,3 +14,4 @@ https://pythonastuces.com/archives/numero-10
 https://pythonastuces.com/archives/numero-11
 https://pythonastuces.com/archives/numero-12
 https://pythonastuces.com/archives/numero-13
+https://pythonastuces.com/archives/numero-14
