@@ -8,6 +8,14 @@
      rel="self" type="application/rss+xml" />
 
 <item>
+    <title>Python Astuces #16 - frozenset dans vos dictionnaires</title>
+    <link>https://pythonastuces.com/archives/numero-16</link>
+    <guid>https://pythonastuces.com/archives/numero-16</guid>
+    <pubDate>Sun, 16 Aug 2020 18:00:00 +0000</pubDate>
+</item>
+
+
+<item>
     <title>Python Astuces #15 - Alternative aux boucles imbriquées</title>
     <link>https://pythonastuces.com/archives/numero-15</link>
     <guid>https://pythonastuces.com/archives/numero-15</guid>
