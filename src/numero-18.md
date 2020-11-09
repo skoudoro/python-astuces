@@ -38,7 +38,7 @@ Bonne semaine à tous!
 
 # Pour information, ce n'est pas la fonctionnalité première
 # du walrus. C'est un petit détournement qui vous permettra
-# d'être plus rapide pour verifier un résultat.
+# d'être plus rapide pour vérifier un résultat.
 ```
 
 **Bonne Pythonnade  🐍!**
