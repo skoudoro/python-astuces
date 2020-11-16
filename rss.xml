@@ -8,6 +8,14 @@
      rel="self" type="application/rss+xml" />
 
 <item>
+    <title>Python Astuces #19 - Attention à bool! Alternative 2-3 fois plus rapide</title>
+    <link>https://pythonastuces.com/archives/numero-19</link>
+    <guid>https://pythonastuces.com/archives/numero-19</guid>
+    <pubDate>Sun, 15 Nov 2020 13:00:00 +0000</pubDate>
+</item>
+
+
+<item>
     <title>Python Astuces #18 - Alternative au print?</title>
     <link>https://pythonastuces.com/archives/numero-18</link>
     <guid>https://pythonastuces.com/archives/numero-18</guid>
