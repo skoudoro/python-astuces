@@ -8,6 +8,14 @@
      rel="self" type="application/rss+xml" />
 
 <item>
+    <title>Python Astuces #20 - Gérer les espaces  ...</title>
+    <link>https://pythonastuces.com/archives/numero-20</link>
+    <guid>https://pythonastuces.com/archives/numero-20</guid>
+    <pubDate>Mon, 23 Nov 2020 10:00:00 +0000</pubDate>
+</item>
+
+
+<item>
     <title>Python Astuces #19 - Attention à bool! Alternative 2-3 fois plus rapide</title>
     <link>https://pythonastuces.com/archives/numero-19</link>
     <guid>https://pythonastuces.com/archives/numero-19</guid>
